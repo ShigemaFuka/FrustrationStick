@@ -13,14 +13,7 @@ public class Move : MonoBehaviour
     public SpriteRenderer sr;   //playerの画像コンポーネント
     [SerializeField] //TextMeshProUGUI deathText;
     Text deathText;
-/*
-    [SerializeField]
-    string _sceneName;
-*/
 
-    //int count;
-
-    // Start is called before the first frame update
     void Start()
     {
         FlgBtn = false;     //まだ追尾しない
@@ -29,11 +22,11 @@ public class Move : MonoBehaviour
         count = 0;
     }
 
-    // Update is called once per frame
     void Update()
     {
         //countを一旦文字列に変えてdTextに代入
         var dText = count.ToString();
+
         //「Death」と「死んだ回数」を表示
         deathText.text = "Death" + dText;
         if (FlgBtn == true)
@@ -47,7 +40,7 @@ public class Move : MonoBehaviour
     }
 
     int count = 0;
-    private void OnCollisionEnter2D(Collision2D collision)
+    void OnCollisionEnter2D(Collision2D collision)
     {
         //Update()のif文の移動停止
         FlgBtn = false;

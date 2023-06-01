@@ -15,15 +15,8 @@ public class GimmickMoveStraight : MonoBehaviour
 
     private void Start()
     {
-        /*
-        Debug.Log(this.gameObject.name+"(x, y, z) = " + transform.position);
-        Debug.Log("x = " + transform.position.x);
-        Debug.Log("y = " + transform.position.y);
-        Debug.Log("z = " + transform.position.z);
-        */
         x_value = transform.position.x;
         y_value = transform.position.y;
-
     }
 
     void Update()
