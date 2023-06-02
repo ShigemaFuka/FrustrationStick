@@ -10,15 +10,14 @@ public class GimmickMoveController : MonoBehaviour
     /// </summary>
 
     [SerializeField, Tooltip("速度")] float _speed;
-    [SerializeField, Tooltip("往復：上下")] bool _is_upDown;
-    [SerializeField, Tooltip("往復：左右")] bool _is_leftRight;
+    [SerializeField, Header("boolは一つだけ真にして使用"), Tooltip("往復：上下")] bool _isUpDown;
+    [SerializeField, Tooltip("往復：左右")] bool _isLeftRight;
+    [SerializeField, Tooltip("回転")] bool _isRotation;
     [Tooltip("これのスクリプトがアタッチされたobjのポジ")] Vector3 _pos;
     // 往復移動でしか使わん予定 ＆ 値はobj毎に変更で。
-    [SerializeField, Tooltip("プラマイでｘ軸の移動範囲")] float _xRange = 2.0f;
+    [SerializeField, Header("正数で良い"), Tooltip("プラマイでｘ軸の移動範囲")] float _xRange = 2.0f;
     [SerializeField, Tooltip("プラマイでｙ軸の移動範囲")] float _yRange = 2.0f;
-    bool _xFlag;
-    bool _yFlag;
-    [SerializeField] bool _flag;
+    bool _flag;
 
 
     //transformを直接変更しても問題ないゲームのため、今回はそうする
@@ -30,7 +29,7 @@ public class GimmickMoveController : MonoBehaviour
         _pos = transform.position;
 
         // 上下
-        if (_is_upDown)
+        if (_isUpDown)
         {
             // フラグを操作
             if (_pos.y >= _yRange)
@@ -45,7 +44,7 @@ public class GimmickMoveController : MonoBehaviour
                 transform.position = Vector3.MoveTowards(_pos, new Vector3(_pos.x, _yRange, 0), _speed * Time.deltaTime);
         }
         // 左右
-        else if (_is_leftRight)
+        else if (_isLeftRight)
         {
             // フラグを操作
             if (_pos.x >= _yRange)
@@ -59,30 +58,10 @@ public class GimmickMoveController : MonoBehaviour
             else if (!_flag)
                 transform.position = Vector3.MoveTowards(_pos, new Vector3(_xRange, _pos.y, 0), _speed * Time.deltaTime);
         }
-    }
-
-
-    /*
-    void UpDown()
-    {
-        // フラグを操作
-        if (_pos.y >= _yRange)
-            _yFlag = true;
-        else if (_pos.y <= -_yRange)
-            _yFlag = false;
-    }
-    void LeftRight()
-    {
-        // フラグを操作
-        if (_pos.x >= _xRange)
+        // 回転
+        else if(_isRotation)
         {
-            _xFlag = true;
-        }
-        else if (_pos.x <= -_xRange)
-        {
-            _xFlag = false;
+            gameObject.transform.Rotate(0, 0, _speed * Time.deltaTime);
         }
     }
-    */
-
 }

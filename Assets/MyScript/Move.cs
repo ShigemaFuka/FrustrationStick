@@ -20,6 +20,8 @@ public class Move : MonoBehaviour
         //「S」をクリックされるまで画像を非表示にしておく
         sr.enabled = false;
         count = 0;
+        GameObject startObj = GameObject.Find("Start");
+        transform.position = startObj.transform.position;
     }
 
     void Update()
@@ -28,7 +30,7 @@ public class Move : MonoBehaviour
         var dText = count.ToString();
 
         //「Death」と「死んだ回数」を表示
-        deathText.text = "Death" + dText;
+        deathText.text = "Death\n" + dText;
         if (FlgBtn == true)
         {
             //以下でカーソル追従
