@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/MyScenes/MyScene2.unity
     guid: 9a96566306fe08049882d73cd5bf1a4f
   - enabled: 1
+    path: Assets/MyScenes/OperationScene.unity
+    guid: 784ad35a87a4dcc43b8a4b026e6fb2d4
+  - enabled: 1
     path: Assets/MyScenes/Goal.unity
     guid: 117e5edf5740b814cb20448cfe805b65
   m_configObjects: {}
