@@ -13,6 +13,8 @@ public class Move : MonoBehaviour
     public SpriteRenderer sr;   //playerの画像コンポーネント
     [SerializeField] //TextMeshProUGUI deathText;
     Text deathText;
+    [SerializeField, Tooltip("接触時に再生")] AudioSource _himei;
+    [SerializeField, Tooltip("クリック音のobj")] GameObject _clickObjPrefab;
 
     void Start()
     {
@@ -22,10 +24,20 @@ public class Move : MonoBehaviour
         count = 0;
         GameObject startObj = GameObject.Find("Start");
         transform.position = startObj.transform.position;
+
+        _himei = GetComponent<AudioSource>();
     }
 
     void Update()
     {
+        /*
+        // 左クリック時
+        if(Input.GetMouseButtonDown(0))
+        {
+            Instantiate(_clickObjPrefab);
+        }
+        */
+
         //countを一旦文字列に変えてdTextに代入
         var dText = count.ToString();
 
@@ -49,6 +61,7 @@ public class Move : MonoBehaviour
         //画像非表示
         sr.enabled = false;
         count += 1;
+        _himei.Play();
         Debug.Log("死んだ回数："+count);
         Debug.Log(collision.gameObject.name + "に当たったよ");
     }
