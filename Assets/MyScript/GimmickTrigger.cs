@@ -5,7 +5,7 @@ using UnityEngine;
 public class GimmickTrigger : MonoBehaviour
 {
     [SerializeField] GimmickMoveController _gimmickMoveController;
-    [SerializeField] bool _isStay;
+    [SerializeField] public bool _isStay;
 
     // Start is called before the first frame update
     void Start()
@@ -16,10 +16,13 @@ public class GimmickTrigger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /*
         if(_isStay)
         {
             _gimmickMoveController.GimmickMove();
+            Debug.Log("実行");
         }
+        */
     }
 
     void OnTriggerStay2D(Collider2D coll)
@@ -27,11 +30,14 @@ public class GimmickTrigger : MonoBehaviour
         if(coll.gameObject.tag == "Player")
         {
             _isStay = true;
-            Debug.Log("トリガー");
+            //Debug.Log("トリガー");
         }
     }
     void OnTriggerExit2D(Collider2D coll)
     {
-        _isStay = false;
+        if (coll.gameObject.tag == "Player")
+        {
+            _isStay = false;
+        }
     }
 }

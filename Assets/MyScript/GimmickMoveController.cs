@@ -22,24 +22,23 @@ public class GimmickMoveController : MonoBehaviour
     [SerializeField, Tooltip("プラマイでｙ軸の移動範囲")] float _yRange = 2.0f;
     bool _flag;
     [Tooltip("初期のポジ")] Vector3 _firstPos;
+
     // トリガーの範囲内に入られたら起動したいから
-    [SerializeField, Tooltip("TriggerStay使う許可(手動入力)")] bool _isTrigger;
+    [Header("トリガー使う場合はポジをきりの良い値にしないと、なぜかうまく動作しない(0.6とかはダメだった)")]
+    [SerializeField, Tooltip("TriggerStay使う許可(手動アサイン)")] bool _isTrigger;
     [Tooltip("トリガーが使えるか")] bool _useTrigger;
-    [SerializeField] GameObject triggerObj;
+    [SerializeField, Tooltip("Triggerオブジェクト(手動アサイン)")] GameObject triggerObj;
+     GimmickTrigger _gimmickTrigger;
 
 
     //transformを直接変更しても問題ないゲームのため、今回はそうする
     //      →　(クリアするためには、プレイヤーが素早く動くことがないから)
-
-    // Triggerオブジェクトがあれば（子オブジェクト）、
 
     private void Start()
     {
         // これにより、objの位置からプラマイいくつ移動、にできる
         _firstPos = transform.position;
 
-        // 毎度リセット
-        //_isTrigger = false;
         if (_isTrigger)
         {
             if (triggerObj == null)
@@ -50,23 +49,30 @@ public class GimmickMoveController : MonoBehaviour
             else if (triggerObj)
             {
                 _useTrigger = true;
+                _gimmickTrigger = triggerObj.GetComponent<GimmickTrigger>();
             }
         }
     }
 
     void Update()
     {
-        
-        if(_useTrigger == false)
+
+        if (_useTrigger == false)
         {
             // フツーに実行
             GimmickMove();
-        }       
+        }
+        else if(_useTrigger && _gimmickTrigger._isStay)
+        {
+            GimmickMove();
+            //Debug.Log("GimmickMove");
+
+        }
     }
 
     public void GimmickMove()
     {
-        _pos = transform.position;
+        _pos = this.transform.position;
 
         // 上下
         if (_isUpDown)
@@ -82,6 +88,7 @@ public class GimmickMoveController : MonoBehaviour
                 transform.position = Vector3.MoveTowards(_pos, new Vector3(_pos.x, _firstPos.y - _yRange, 0), _speed * Time.deltaTime);
             else if (!_flag)
                 transform.position = Vector3.MoveTowards(_pos, new Vector3(_pos.x, _firstPos.y + _yRange, 0), _speed * Time.deltaTime);
+
         }
         // 左右
         else if (_isLeftRight)
