@@ -104,6 +104,7 @@ MonoBehaviour:
   sr: {fileID: 7900534759396395786}
   deathText: {fileID: 0}
   _himei: {fileID: 0}
+  _clickObjPrefab: {fileID: 180722709864159724, guid: cd1ca0d660711bc4d9c29e7dd8be8b95, type: 3}
 --- !u!58 &7900534759396395784
 CircleCollider2D:
   m_ObjectHideFlags: 0
