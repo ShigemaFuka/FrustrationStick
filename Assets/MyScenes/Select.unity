@@ -522,6 +522,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6177505349958405130, guid: 4c926b2e689d8a64081c81c79b48bb1a, type: 3}
+      propertyPath: m_Volume
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 8526121611307734984, guid: 4c926b2e689d8a64081c81c79b48bb1a, type: 3}
       propertyPath: m_Name
       value: BGM
@@ -1615,6 +1619,10 @@ PrefabInstance:
     - target: {fileID: 180722709864159724, guid: cd1ca0d660711bc4d9c29e7dd8be8b95, type: 3}
       propertyPath: m_Name
       value: ClickSE
+      objectReference: {fileID: 0}
+    - target: {fileID: 180722709864159725, guid: cd1ca0d660711bc4d9c29e7dd8be8b95, type: 3}
+      propertyPath: m_Volume
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 180722709864159726, guid: cd1ca0d660711bc4d9c29e7dd8be8b95, type: 3}
       propertyPath: m_RootOrder

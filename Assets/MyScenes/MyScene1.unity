@@ -743,25 +743,13 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 6582978018155104463, guid: aa8085ca4591c72438603ab94c179ac8, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6582978018155104463, guid: aa8085ca4591c72438603ab94c179ac8, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 160639017}
-    - target: {fileID: 6582978018155104463, guid: aa8085ca4591c72438603ab94c179ac8, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnClickStart
-      objectReference: {fileID: 0}
-    - target: {fileID: 6582978018475639727, guid: aa8085ca4591c72438603ab94c179ac8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 160639017}
     - target: {fileID: 6582978018475639727, guid: aa8085ca4591c72438603ab94c179ac8, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ChangeScene
-      objectReference: {fileID: 0}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 160639017}
     - target: {fileID: 6582978018924235288, guid: aa8085ca4591c72438603ab94c179ac8, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -849,10 +837,6 @@ PrefabInstance:
     - target: {fileID: 6582978018924235292, guid: aa8085ca4591c72438603ab94c179ac8, type: 3}
       propertyPath: m_Name
       value: Canvas (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 6582978018924235292, guid: aa8085ca4591c72438603ab94c179ac8, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa8085ca4591c72438603ab94c179ac8, type: 3}

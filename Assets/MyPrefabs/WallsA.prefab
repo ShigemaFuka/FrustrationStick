@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -125,11 +125,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 5
+  _speedRotate: 0
   _isUpDown: 0
   _isLeftRight: 0
   _isRotation: 0
   _xRange: 2
   _yRange: 2
+  _isTrigger: 0
+  triggerObj: {fileID: 0}
 --- !u!1 &7023997927840861585
 GameObject:
   m_ObjectHideFlags: 0
@@ -241,7 +244,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -290,11 +293,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 5
+  _speedRotate: 0
   _isUpDown: 0
   _isLeftRight: 0
   _isRotation: 0
   _xRange: 2
   _yRange: 2
+  _isTrigger: 0
+  triggerObj: {fileID: 0}
 --- !u!1 &7023997928113731662
 GameObject:
   m_ObjectHideFlags: 0
@@ -371,7 +377,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -420,11 +426,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 5
+  _speedRotate: 0
   _isUpDown: 0
   _isLeftRight: 0
   _isRotation: 0
   _xRange: 2
   _yRange: 2
+  _isTrigger: 0
+  triggerObj: {fileID: 0}
 --- !u!1 &7023997929716351217
 GameObject:
   m_ObjectHideFlags: 0
@@ -501,7 +510,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -550,8 +559,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 5
+  _speedRotate: 0
   _isUpDown: 0
   _isLeftRight: 0
   _isRotation: 0
   _xRange: 2
   _yRange: 2
+  _isTrigger: 0
+  triggerObj: {fileID: 0}
