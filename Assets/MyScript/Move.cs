@@ -15,6 +15,7 @@ public class Move : MonoBehaviour
     Text deathText;
     [SerializeField, Tooltip("接触時に再生")] AudioSource _himei;
     [SerializeField, Tooltip("クリック音のobj")] GameObject _clickObjPrefab;
+    CircleCollider2D _circleCollider2D;
 
     void Start()
     {
@@ -26,18 +27,13 @@ public class Move : MonoBehaviour
         transform.position = startObj.transform.position;
 
         _himei = GetComponent<AudioSource>();
+        _circleCollider2D = GetComponent<CircleCollider2D>();
+        // コライダOFF
+        _circleCollider2D.enabled = false;
     }
 
     void Update()
     {
-        /*
-        // 左クリック時
-        if(Input.GetMouseButtonDown(0))
-        {
-            Instantiate(_clickObjPrefab);
-        }
-        */
-
         //countを一旦文字列に変えてdTextに代入
         var dText = count.ToString();
 
@@ -60,7 +56,9 @@ public class Move : MonoBehaviour
         FlgBtn = false;
         //画像非表示
         sr.enabled = false;
-        count += 1;
+        // コライダOFF
+        _circleCollider2D.enabled = false;
+        count += 1; 
         _himei.Play();
         Debug.Log("死んだ回数："+count);
         Debug.Log(collision.gameObject.name + "に当たったよ");
@@ -73,6 +71,8 @@ public class Move : MonoBehaviour
         FlgBtn = true;
         //画像表示
         sr.enabled = true;
+        // コライダON
+        _circleCollider2D.enabled = true;
     }
     
     //「Back」ボタンがクリックされたら
