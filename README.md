@@ -11,3 +11,4 @@
 
 ####  SE
 ・[魔王魂](https://maou.audio/)
+・[効果音ラボ](https://soundeffect-lab.info/)
