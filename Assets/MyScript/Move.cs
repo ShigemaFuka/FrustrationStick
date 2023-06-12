@@ -16,8 +16,13 @@ public class Move : MonoBehaviour
     [SerializeField, Tooltip("接触時に再生")] AudioSource _himei;
     [SerializeField, Tooltip("クリック音のobj")] GameObject _clickObjPrefab;
     CircleCollider2D _circleCollider2D;
-    [Tooltip("死んだ回数")] int count = 0;
-    [Tooltip("Startの位置")] GameObject _startObj; 
+    [Tooltip("死んだ回数")] int _count = 0;
+    [Tooltip("Startの位置")] GameObject _startObj;
+
+    /*
+    GameObject _gimmickMoveControllerObj;
+    GimmickMoveController _gimmickMoveController; 
+    */
 
     void Start()
     {
@@ -27,7 +32,7 @@ public class Move : MonoBehaviour
         _sr = GetComponent<SpriteRenderer>();
         _sr.enabled = false;
 
-        count = 0;
+        _count = 0;
 
         // 位置を初期化 
         _startObj = GameObject.Find("Start");
@@ -42,12 +47,14 @@ public class Move : MonoBehaviour
         _circleCollider2D = GetComponent<CircleCollider2D>();
         // コライダOFF
         _circleCollider2D.enabled = false;
+
+        // _gimmickMoveController = _gimmickMoveControllerObj.GetComponent<GimmickMoveController>();
     }
 
     void Update()
     {
         //countを一旦文字列に変えてdTextに代入
-        var dText = count.ToString();
+        var dText = _count.ToString();
 
         //「Death」と「死んだ回数」を表示
         _deathText.text = "Death\n" + dText; 
@@ -69,9 +76,9 @@ public class Move : MonoBehaviour
         _sr.enabled = false;
         // コライダOFF
         _circleCollider2D.enabled = false;
-        count += 1; 
+        _count += 1; 
         _himei.Play();
-        Debug.Log("死んだ回数："+count);
+        Debug.Log("死んだ回数："+_count);
         Debug.Log(collision.gameObject.name + "に当たったよ");
     }
 
@@ -83,7 +90,10 @@ public class Move : MonoBehaviour
         //画像表示
         _sr.enabled = true;
         // コライダON
-        _circleCollider2D.enabled = true; 
+        _circleCollider2D.enabled = true;
+
+        // 初期位置に戻すbool
+        // _gimmickMoveController._isPosBack = true;
     }
     
     //「Back」ボタンがクリックされたら

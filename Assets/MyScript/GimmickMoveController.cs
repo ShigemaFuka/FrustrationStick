@@ -21,16 +21,17 @@ public class GimmickMoveController : MonoBehaviour
     [SerializeField, Header("正数で良い"), Tooltip("プラマイでｘ軸の移動範囲")] float _xRange = 2.0f;
     [SerializeField, Tooltip("プラマイでｙ軸の移動範囲")] float _yRange = 2.0f;
     bool _flag;
-    [Tooltip("初期のポジ")] Vector3 _firstPos;
+    [Tooltip("初期のポジ")] public Vector3 _firstPos;
 
     // トリガーの範囲内に入られたら起動したいから
     [Header("トリガー使う場合はポジをきりの良い値にしないと、なぜかうまく動作しない(0.6とかはダメだった)")]
     [SerializeField, Tooltip("TriggerStay使う許可(手動アサイン)")] bool _isTrigger;
     [Tooltip("トリガーが使えるか")] bool _useTrigger;
     [SerializeField, Tooltip("Triggerオブジェクト(手動アサイン)")] GameObject triggerObj;
-     GimmickTrigger _gimmickTrigger;
+    GimmickTrigger _gimmickTrigger;
 
-    [SerializeField, Header("以下は往復しないやつ"), Tooltip("TriggerStay使う許可(手動アサイン)")] bool _isTrigger_2;
+    [SerializeField, Header("往復しない"), Tooltip("往復しない")] bool _dontRoundTrip;
+    [Tooltip("位置戻る")] public bool _isPosBack; 
 
 
     //transformを直接変更しても問題ないゲームのため、今回はそうする
@@ -52,6 +53,9 @@ public class GimmickMoveController : MonoBehaviour
             {
                 _useTrigger = true;
                 _gimmickTrigger = triggerObj.GetComponent<GimmickTrigger>();
+
+                // 初期化
+                _isPosBack = false;
             }
         }
     }
@@ -85,12 +89,32 @@ public class GimmickMoveController : MonoBehaviour
             else if (_pos.y <= _firstPos.y - _yRange)
                 _flag = false;
 
-            //以下フラグによって実行内容を分けている
-            if (_flag)
-                transform.position = Vector3.MoveTowards(_pos, new Vector3(_pos.x, _firstPos.y - _yRange, 0), _speed * Time.deltaTime);
-            else if (!_flag)
-                transform.position = Vector3.MoveTowards(_pos, new Vector3(_pos.x, _firstPos.y + _yRange, 0), _speed * Time.deltaTime);
-
+            // 往復させる
+            if (!_dontRoundTrip)
+            { 
+                //以下フラグによって実行内容を分けている
+                if (_flag)
+                    transform.position = Vector3.MoveTowards(_pos, new Vector3(_pos.x, _firstPos.y - _yRange, 0), _speed * Time.deltaTime);
+                else if (!_flag)
+                    transform.position = Vector3.MoveTowards(_pos, new Vector3(_pos.x, _firstPos.y + _yRange, 0), _speed * Time.deltaTime);
+            }
+            else if(_dontRoundTrip)
+            {
+                // 下へ移動
+                if(!_isPosBack)
+                    transform.position = Vector3.MoveTowards(_pos, new Vector3(_pos.x, _firstPos.y - _yRange, 0), _speed  * Time.deltaTime);
+                /*
+                // 上へ移動
+                else if (!_flag && _isPosBack)
+                    transform.position = Vector3.MoveTowards(_pos, new Vector3(_pos.x, _firstPos.y + _yRange, 0), _speed  * Time.deltaTime);
+                */
+                /*
+                else if(_isPosBack)
+                {
+                    this.gameObject.transform.position = _firstPos;
+                }
+                */
+            }
         }
         // 左右
         else if (_isLeftRight)
@@ -101,11 +125,21 @@ public class GimmickMoveController : MonoBehaviour
             else if (_pos.x <= _firstPos.x - _xRange)
                 _flag = false;
 
-            //以下フラグによって実行内容を分けている
-            if (_flag)
-                transform.position = Vector3.MoveTowards(_pos, new Vector3(_firstPos.x - _xRange, _pos.y, 0), _speed * Time.deltaTime);
-            else if (!_flag)
-                transform.position = Vector3.MoveTowards(_pos, new Vector3(_firstPos.x + _xRange, _pos.y, 0), _speed * Time.deltaTime);
+            // 往復させる
+            if (!_dontRoundTrip)
+            {
+                //以下フラグによって実行内容を分けている
+                if (_flag)
+                    transform.position = Vector3.MoveTowards(_pos, new Vector3(_firstPos.x - _xRange, _pos.y, 0), _speed * Time.deltaTime);
+                else if (!_flag)
+                    transform.position = Vector3.MoveTowards(_pos, new Vector3(_firstPos.x + _xRange, _pos.y, 0), _speed * Time.deltaTime);
+            }
+            else if(_dontRoundTrip)
+            {
+                //以下フラグによって実行内容を分けている
+                if (_flag)
+                    transform.position = Vector3.MoveTowards(_pos, new Vector3(_firstPos.x - _xRange, _pos.y, 0), _speed * Time.deltaTime);
+            }
         }
         // 回転
         if (_isRotation)
