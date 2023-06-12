@@ -30,6 +30,8 @@ public class GimmickMoveController : MonoBehaviour
     [SerializeField, Tooltip("Triggerオブジェクト(手動アサイン)")] GameObject triggerObj;
      GimmickTrigger _gimmickTrigger;
 
+    [SerializeField, Header("以下は往復しないやつ"), Tooltip("TriggerStay使う許可(手動アサイン)")] bool _isTrigger_2;
+
 
     //transformを直接変更しても問題ないゲームのため、今回はそうする
     //      →　(クリアするためには、プレイヤーが素早く動くことがないから)

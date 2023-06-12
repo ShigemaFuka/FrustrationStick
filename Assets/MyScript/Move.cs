@@ -4,27 +4,37 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro; //TextMeshProを扱う際に必要
 using UnityEngine.UI;
+using Unity.VisualScripting;
 
 public class Move : MonoBehaviour
 {
     // 「start」がクリックされたらplayer追尾開始
     
-    public bool FlgBtn;         //「S」のクリック判定のフラグ
-    public SpriteRenderer sr;   //playerの画像コンポーネント
-    [SerializeField] //TextMeshProUGUI deathText;
-    Text deathText;
+    [Tooltip("「S」のクリック判定のフラグ")] public bool _FlgBtn; 
+    [Tooltip("playerの画像コンポーネント")] public SpriteRenderer _sr;  
+    [SerializeField] Text _deathText;
     [SerializeField, Tooltip("接触時に再生")] AudioSource _himei;
     [SerializeField, Tooltip("クリック音のobj")] GameObject _clickObjPrefab;
     CircleCollider2D _circleCollider2D;
+    [Tooltip("死んだ回数")] int count = 0;
 
     void Start()
     {
-        FlgBtn = false;     //まだ追尾しない
+        _FlgBtn = false;     //まだ追尾しない
+
         //「S」をクリックされるまで画像を非表示にしておく
-        sr.enabled = false;
+        _sr = GetComponent<SpriteRenderer>();
+        _sr.enabled = false;
+
         count = 0;
+
+        // 位置を初期化 
         GameObject startObj = GameObject.Find("Start");
         transform.position = startObj.transform.position;
+
+        // 
+        GameObject deathTextObj = GameObject.Find("DeathText (Legacy)");
+        _deathText = deathTextObj.GetComponent<Text>();
 
         _himei = GetComponent<AudioSource>();
         _circleCollider2D = GetComponent<CircleCollider2D>();
@@ -38,8 +48,8 @@ public class Move : MonoBehaviour
         var dText = count.ToString();
 
         //「Death」と「死んだ回数」を表示
-        deathText.text = "Death\n" + dText;
-        if (FlgBtn == true)
+        _deathText.text = "Death\n" + dText; 
+        if (_FlgBtn == true)
         {
             //以下でカーソル追従
             var mousePosition = Input.mousePosition;
@@ -49,13 +59,12 @@ public class Move : MonoBehaviour
         }
     }
 
-    int count = 0;
     void OnCollisionEnter2D(Collision2D collision)
     {
         //Update()のif文の移動停止
-        FlgBtn = false;
+        _FlgBtn = false;
         //画像非表示
-        sr.enabled = false;
+        _sr.enabled = false;
         // コライダOFF
         _circleCollider2D.enabled = false;
         count += 1; 
@@ -68,17 +77,25 @@ public class Move : MonoBehaviour
     public void OnClickStart()
     {
         //Update()のif文の移動開始
-        FlgBtn = true;
+        _FlgBtn = true;
         //画像表示
-        sr.enabled = true;
+        _sr.enabled = true;
         // コライダON
-        _circleCollider2D.enabled = true;
+        _circleCollider2D.enabled = true; 
     }
     
     //「Back」ボタンがクリックされたら
     public void ChangeScene(string name)
     {
         SceneManager.LoadScene(name);
+
+        //Update()のif文の移動開始
+        _FlgBtn = false;
+        //画像表示
+        _sr.enabled = false;
+        // コライダON
+        _circleCollider2D.enabled = false;
+
         Debug.Log("ChangeScene!!");
     }
 

@@ -16,13 +16,7 @@ public class GimmickTrigger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*
-        if(_isStay)
-        {
-            _gimmickMoveController.GimmickMove();
-            Debug.Log("é¿çs");
-        }
-        */
+        
     }
 
     void OnTriggerStay2D(Collider2D coll)
