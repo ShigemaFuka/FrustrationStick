@@ -17,6 +17,7 @@ public class Move : MonoBehaviour
     [SerializeField, Tooltip("クリック音のobj")] GameObject _clickObjPrefab;
     CircleCollider2D _circleCollider2D;
     [Tooltip("死んだ回数")] int count = 0;
+    [Tooltip("Startの位置")] GameObject _startObj; 
 
     void Start()
     {
@@ -29,14 +30,15 @@ public class Move : MonoBehaviour
         count = 0;
 
         // 位置を初期化 
-        GameObject startObj = GameObject.Find("Start");
-        transform.position = startObj.transform.position;
+        _startObj = GameObject.Find("Start");
+        transform.position = _startObj.transform.position;
 
-        // 
+        // 死んだ回数のテキスト参照
         GameObject deathTextObj = GameObject.Find("DeathText (Legacy)");
         _deathText = deathTextObj.GetComponent<Text>();
 
         _himei = GetComponent<AudioSource>();
+
         _circleCollider2D = GetComponent<CircleCollider2D>();
         // コライダOFF
         _circleCollider2D.enabled = false;
@@ -89,16 +91,18 @@ public class Move : MonoBehaviour
     {
         SceneManager.LoadScene(name);
 
+        OnChangeBoolToFalse();
+
+        Debug.Log("ChangeScene!!");
+    }
+
+    public void OnChangeBoolToFalse()
+    {
         //Update()のif文の移動開始
         _FlgBtn = false;
         //画像表示
         _sr.enabled = false;
         // コライダON
         _circleCollider2D.enabled = false;
-
-        Debug.Log("ChangeScene!!");
     }
-
-
-
 }

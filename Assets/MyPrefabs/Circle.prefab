@@ -100,9 +100,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09fc8384d931f4a4b8b292b6bd6d2f36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FlgBtn: 0
-  sr: {fileID: 7900534759396395786}
-  deathText: {fileID: 0}
+  _FlgBtn: 0
+  _sr: {fileID: 0}
+  _deathText: {fileID: 0}
   _himei: {fileID: 0}
   _clickObjPrefab: {fileID: 180722709864159724, guid: cd1ca0d660711bc4d9c29e7dd8be8b95, type: 3}
 --- !u!58 &7900534759396395784
