@@ -781,6 +781,10 @@ PrefabInstance:
       value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 8466341007381748417, guid: dca53fc37b67ba644b46d1d14cb413e0, type: 3}
+      propertyPath: _isDown
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8466341007381748417, guid: dca53fc37b67ba644b46d1d14cb413e0, type: 3}
       propertyPath: _dontRoundTrip
       value: 1
       objectReference: {fileID: 0}

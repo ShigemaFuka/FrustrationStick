@@ -30,8 +30,11 @@ public class GimmickMoveController : MonoBehaviour
     [SerializeField, Tooltip("Triggerオブジェクト(手動アサイン)")] GameObject triggerObj;
     GimmickTrigger _gimmickTrigger;
 
-    [SerializeField, Header("往復しない"), Tooltip("往復しない")] bool _dontRoundTrip;
-    [Tooltip("位置戻る")] public bool _isPosBack; 
+    [SerializeField, Header("以下往復しないやつ"), Tooltip("往復しない")] bool _dontRoundTrip;
+    [Tooltip("位置戻る(触るな)")] public bool _isPosBack;
+    [Space]
+    [SerializeField, Tooltip("下に移動(手動で真偽)")] bool _isDown;
+    [SerializeField, Tooltip("上に移動(手動で真偽)")] bool _isUp;
 
 
     //transformを直接変更しても問題ないゲームのため、今回はそうする
@@ -101,19 +104,13 @@ public class GimmickMoveController : MonoBehaviour
             else if(_dontRoundTrip)
             {
                 // 下へ移動
-                if(!_isPosBack)
+                if(!_isPosBack && _isDown)
                     transform.position = Vector3.MoveTowards(_pos, new Vector3(_pos.x, _firstPos.y - _yRange, 0), _speed  * Time.deltaTime);
-                /*
                 // 上へ移動
-                else if (!_flag && _isPosBack)
-                    transform.position = Vector3.MoveTowards(_pos, new Vector3(_pos.x, _firstPos.y + _yRange, 0), _speed  * Time.deltaTime);
-                */
-                /*
-                else if(_isPosBack)
+                else if (!_isPosBack && _isUp)
                 {
-                    this.gameObject.transform.position = _firstPos;
+                    transform.position = Vector3.MoveTowards(_pos, new Vector3(_pos.x, _firstPos.y + _yRange, 0), _speed * Time.deltaTime);
                 }
-                */
             }
         }
         // 左右
