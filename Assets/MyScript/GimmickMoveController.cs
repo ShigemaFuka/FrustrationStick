@@ -14,27 +14,29 @@ public class GimmickMoveController : MonoBehaviour
 
     [SerializeField, Header("boolは一つだけ真にして使用(_isRotationは併用可能)"), Tooltip("往復：上下")] bool _isUpDown;
     [SerializeField, Tooltip("往復：左右")] bool _isLeftRight;
-    [SerializeField, Tooltip("回転")] bool _isRotation;
+    [SerializeField, Tooltip("回転 「GimmickTrigger」で使用")] public bool _isRotation;
     [Tooltip("これのスクリプトがアタッチされたobjのポジ")] Vector3 _pos;
 
     // 往復移動でしか使わん予定 ＆ 値はobj毎に変更で。
     [SerializeField, Header("正数で良い"), Tooltip("プラマイでｘ軸の移動範囲")] float _xRange = 2.0f;
     [SerializeField, Tooltip("プラマイでｙ軸の移動範囲")] float _yRange = 2.0f;
     bool _flag;
-    [Tooltip("初期のポジ")] public Vector3 _firstPos;
+    [Header("手動で変更するな"), Tooltip("初期のポジ")] public Vector3 _firstPos;
 
     // トリガーの範囲内に入られたら起動したいから
     [Header("トリガー使う場合はポジをきりの良い値にしないと、なぜかうまく動作しない(0.6とかはダメだった)")]
     [SerializeField, Tooltip("TriggerStay使う許可(手動アサイン)")] bool _isTrigger;
     [Tooltip("トリガーが使えるか")] bool _useTrigger;
-    [SerializeField, Tooltip("Triggerオブジェクト(手動アサイン)")] GameObject triggerObj;
+    [SerializeField, Header("_isTriggerを真にしてるなら手動アサイン"), Tooltip("Triggerオブジェクト")] GameObject _triggerObj;
     GimmickTrigger _gimmickTrigger;
 
     [SerializeField, Header("以下往復しないやつ"), Tooltip("往復しない")] bool _dontRoundTrip;
-    [Tooltip("位置戻る(触るな)")] public bool _isPosBack;
+    [Tooltip("位置戻る(触るな) 「GimmickTrigger」で使用")] public bool _isPosBack;
     [Space]
     [SerializeField, Tooltip("下に移動(手動で真偽)")] bool _isDown;
     [SerializeField, Tooltip("上に移動(手動で真偽)")] bool _isUp;
+    [SerializeField, Tooltip("下に移動(手動で真偽)")] bool _isLeft;
+    [SerializeField, Tooltip("上に移動(手動で真偽)")] bool _isRight;
 
 
     //transformを直接変更しても問題ないゲームのため、今回はそうする
@@ -47,15 +49,15 @@ public class GimmickMoveController : MonoBehaviour
 
         if (_isTrigger)
         {
-            if (triggerObj == null)
+            if (_triggerObj == null)
             {
                 _useTrigger = false;
                 Debug.LogWarning("Triggerオブジェクトがない");
             }
-            else if (triggerObj)
+            else if (_triggerObj)
             {
                 _useTrigger = true;
-                _gimmickTrigger = triggerObj.GetComponent<GimmickTrigger>();
+                _gimmickTrigger = _triggerObj.GetComponent<GimmickTrigger>();
 
                 // 初期化
                 _isPosBack = false;
@@ -74,8 +76,6 @@ public class GimmickMoveController : MonoBehaviour
         else if(_useTrigger && _gimmickTrigger._isStay)
         {
             GimmickMove();
-            //Debug.Log("GimmickMove");
-
         }
     }
 
@@ -133,9 +133,14 @@ public class GimmickMoveController : MonoBehaviour
             }
             else if(_dontRoundTrip)
             {
-                //以下フラグによって実行内容を分けている
-                if (_flag)
+                // 左へ移動
+                if (!_isPosBack && _isLeft)
                     transform.position = Vector3.MoveTowards(_pos, new Vector3(_firstPos.x - _xRange, _pos.y, 0), _speed * Time.deltaTime);
+                // 右へ移動
+                else if (!_isPosBack && _isRight)
+                {
+                    transform.position = Vector3.MoveTowards(_pos, new Vector3(_firstPos.x + _xRange, _pos.y, 0), _speed * Time.deltaTime);
+                }
             }
         }
         // 回転

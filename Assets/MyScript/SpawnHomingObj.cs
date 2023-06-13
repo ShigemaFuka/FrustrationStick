@@ -8,11 +8,11 @@ public class SpawnHomingObj : MonoBehaviour
 {
     [SerializeField, Tooltip("生成したいobj")] GameObject _spawnObject;
     [SerializeField, Tooltip("トータルで何個生成させるか")] int _spawnCount;
-    int _count;
+    [Tooltip("「Homing」と共有して使用")] public　static int _count;
 
     void Start()
     {
-        
+        _count = 0;
     }
 
     void Update()
