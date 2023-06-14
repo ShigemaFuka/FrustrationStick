@@ -6,9 +6,9 @@ using static UnityEngine.RuleTile.TilingRuleOutput;
 public class GimmickTrigger : MonoBehaviour
 {
      GameObject _gimmickMoveControllerObj;
-     GimmickMoveController _gimmickMoveController;
+     GimmickMoveController_2 _gimmickMoveController;
     [SerializeField] public bool _isStay;
-    [SerializeField, Tooltip("戻る速さ")] float _speed;
+    //[SerializeField, Tooltip("戻る速さ")] float _speed;
 
     // Start is called before the first frame update
     void Start()
@@ -19,7 +19,7 @@ public class GimmickTrigger : MonoBehaviour
         // GameObject 探したい子オブジェクトが入る = 「GameObject.Find("親オブジェクトの名前 / それと親子関係である、探したい子オブジェクト");」
         _gimmickMoveControllerObj = GameObject.Find(parentObjName + "/TriggerWall");
         //_gimmickMoveControllerObj = GameObject.Find("TriggerWall");
-        _gimmickMoveController = _gimmickMoveControllerObj.GetComponent<GimmickMoveController>();
+        _gimmickMoveController = _gimmickMoveControllerObj.GetComponent<GimmickMoveController_2>();
     }
 
     // Update is called once per frame
@@ -33,7 +33,7 @@ public class GimmickTrigger : MonoBehaviour
         if(coll.gameObject.tag == "Player")
         {
             _isStay = true;
-            _gimmickMoveController._isPosBack = false;
+           // _gimmickMoveController._isPosBack = false;
         }
     }
     void OnTriggerExit2D(Collider2D coll)
@@ -42,15 +42,21 @@ public class GimmickTrigger : MonoBehaviour
         {
             _isStay = false;
             // 初期位置に戻すbool
-            _gimmickMoveController._isPosBack = true;
-            Invoke("OnMoveFirstPos", 1.0f);
+            // _gimmickMoveController._isPosBack = true;
+
+            if (!_gimmickMoveController._roundTrip)
+            {
+                Invoke("OnMoveFirstPos", 0.0f);
+            }
         }
     }
 
     void OnMoveFirstPos()
     {
         _gimmickMoveControllerObj.gameObject.transform.position = _gimmickMoveController._firstPos;
-
+        Vector3 GMCO_Rotaton = _gimmickMoveControllerObj.transform.eulerAngles;
+        GMCO_Rotaton.z = 0;
+        _gimmickMoveControllerObj.transform.eulerAngles = GMCO_Rotaton;
         /*
         _gimmickMoveControllerObj.gameObject.transform.position 
             = Vector3.MoveTowards(_gimmickMoveControllerObj.transform.position, new Vector3(_gimmickMoveController._firstPos.x, _gimmickMoveController._firstPos.y, _gimmickMoveController._firstPos.z), _speed * Time.deltaTime);

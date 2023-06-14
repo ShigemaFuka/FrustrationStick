@@ -61,8 +61,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32ba46d9cc36dfe4b8e0cd1bef57cc46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gimmickMoveController: {fileID: 8466341007381748417}
   _isStay: 0
+  _speed: 0
 --- !u!1 &8466341007381748419
 GameObject:
   m_ObjectHideFlags: 0
@@ -73,8 +73,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8466341007381748416}
   - component: {fileID: 8466341007381748423}
-  - component: {fileID: 8466341007381748417}
   - component: {fileID: 8466341007381748420}
+  - component: {fileID: 2319315699154055834}
   m_Layer: 0
   m_Name: TriggerWall
   m_TagString: Untagged
@@ -149,27 +149,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8466341007381748417
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8466341007381748419}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c46aaa222014824ab5c41c4f5ab3c1a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _speed: 35
-  _speedRotate: 0
-  _isUpDown: 1
-  _isLeftRight: 0
-  _isRotation: 0
-  _xRange: 4
-  _yRange: 4
-  _isTrigger: 1
-  triggerObj: {fileID: 8466341007041681424}
 --- !u!61 &8466341007381748420
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -196,6 +175,33 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &2319315699154055834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8466341007381748419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e05f45733b4c984d83c06c0c89a58a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 0
+  _speedRotate: 0
+  _roundTrip: 0
+  _isUpDown: 0
+  _isLeftRight: 0
+  _isDown: 0
+  _isUp: 0
+  _isLeft: 0
+  _isRight: 0
+  _isRotation: 0
+  _xRange: 2
+  _yRange: 2
+  _firstPos: {x: 0, y: 0, z: 0}
+  _isTrigger: 0
+  _triggerObj: {fileID: 8466341007041681424}
 --- !u!1 &9149214227016090304
 GameObject:
   m_ObjectHideFlags: 0
