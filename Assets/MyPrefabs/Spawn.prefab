@@ -45,8 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d2925861d8523346a707da1873d8b8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spawnObject: {fileID: 7259067313867054776, guid: 84aac6fa419bc874eb73ecd40d08ebdc, type: 3}
-  _spawnCount: 2
+  _spawnObject: {fileID: 0}
+  _spawnCount: 0
 --- !u!70 &5960304615272200756
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

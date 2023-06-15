@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3821840357565400506}
   - component: {fileID: 3821840357565400507}
   - component: {fileID: 4723547767883328583}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: HomingObj_A_big
   m_TagString: Untagged
   m_Icon: {fileID: 0}

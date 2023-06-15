@@ -4,15 +4,10 @@ using UnityEngine;
 
 public class GimmickMoveController_2 : MonoBehaviour
 {
-    /// <summary>
-    /// boolの選択次第で動作を変える
-    /// boolの選択は手動
-    /// </summary>
-
     [SerializeField, Tooltip("速度")] float _speed;
     [SerializeField, Tooltip("回転速度")] float _speedRotate;
     [Header("往復用")]
-    [SerializeField, Tooltip("往復するか 「GimmickTrigger」で使用")] public bool _roundTrip;
+    [SerializeField, Tooltip("場所初期化")] public bool _resetPos;
     [SerializeField, Tooltip("往復：上下")] bool _isUpDown;
     [SerializeField, Tooltip("往復：左右")] bool _isLeftRight;
     [Space]
@@ -38,8 +33,6 @@ public class GimmickMoveController_2 : MonoBehaviour
     [SerializeField, Header("_isTriggerを真にしてるなら手動アサイン"), Tooltip("Triggerオブジェクト")] GameObject _triggerObj;
     GimmickTrigger _gimmickTrigger;
 
-
-
     //transformを直接変更しても問題ないゲームのため、今回はそうする
     //      →　(クリアするためには、プレイヤーが素早く動くことがないから)
 
@@ -47,8 +40,6 @@ public class GimmickMoveController_2 : MonoBehaviour
     {
         // これにより、objの位置からプラマイいくつ移動、にできる
         _firstPos = transform.position;
-
-        _roundTrip = false;
 
         if (_isTrigger)
         {
@@ -61,9 +52,6 @@ public class GimmickMoveController_2 : MonoBehaviour
             {
                 _useTrigger = true;
                 _gimmickTrigger = _triggerObj.GetComponent<GimmickTrigger>();
-
-                // 初期化
-                //_isPosBack = false;
             }
         }
     }
@@ -117,8 +105,6 @@ public class GimmickMoveController_2 : MonoBehaviour
             // 上へ移動
             else if (!_flagY)
                 transform.position = Vector3.MoveTowards(_pos, new Vector3(_pos.x, _firstPos.y + _yRange, 0), _speed * Time.deltaTime);
-
-            _roundTrip = true;
         }
         // 以下　左右
         else if (_isLeftRight)
@@ -138,8 +124,6 @@ public class GimmickMoveController_2 : MonoBehaviour
             // 右へ移動
             else if (!_flagX)
                 transform.position = Vector3.MoveTowards(_pos, new Vector3(_firstPos.x + _xRange, _pos.y, 0), _speed * Time.deltaTime);
-
-            _roundTrip = true;
         }
 
         // 回転
@@ -147,77 +131,5 @@ public class GimmickMoveController_2 : MonoBehaviour
         {
             gameObject.transform.Rotate(0, 0, _speedRotate * Time.deltaTime);
         }
-        
-
-        /*
-        // 上下
-        if (_isUpDown)
-        {
-            // フラグを操作
-            if (_pos.y >= _firstPos.y + _yRange)
-                _flag = true;
-            else if (_pos.y <= _firstPos.y - _yRange)
-                _flag = false;
-
-            // 往復させる
-            if (!_dontRoundTrip)
-            { 
-                //以下フラグによって実行内容を分けている
-
-                // 下へ移動
-                if (_flag)
-                    transform.position = Vector3.MoveTowards(_pos, new Vector3(_pos.x, _firstPos.y - _yRange, 0), _speed * Time.deltaTime);
-                // 上へ移動
-                else if (!_flag)
-                    transform.position = Vector3.MoveTowards(_pos, new Vector3(_pos.x, _firstPos.y + _yRange, 0), _speed * Time.deltaTime);
-            }
-            else if(_dontRoundTrip)
-            {
-                // 下へ移動
-                if(!_isPosBack && _isDown)
-                    transform.position = Vector3.MoveTowards(_pos, new Vector3(_pos.x, _firstPos.y - _yRange, 0), _speed  * Time.deltaTime);
-                // 上へ移動
-                else if (!_isPosBack && _isUp)
-                {
-                    transform.position = Vector3.MoveTowards(_pos, new Vector3(_pos.x, _firstPos.y + _yRange, 0), _speed * Time.deltaTime);
-                }
-            }
-        }
-        // 左右
-        else if (_isLeftRight)
-        {
-            // フラグを操作
-            if (_pos.x >= _firstPos.x + _xRange)
-                _flag = true;
-            else if (_pos.x <= _firstPos.x - _xRange)
-                _flag = false;
-
-            // 往復させる
-            if (!_dontRoundTrip)
-            {
-                //以下フラグによって実行内容を分けている
-                if (_flag)
-                    transform.position = Vector3.MoveTowards(_pos, new Vector3(_firstPos.x - _xRange, _pos.y, 0), _speed * Time.deltaTime);
-                else if (!_flag)
-                    transform.position = Vector3.MoveTowards(_pos, new Vector3(_firstPos.x + _xRange, _pos.y, 0), _speed * Time.deltaTime);
-            }
-            else if(_dontRoundTrip)
-            {
-                // 左へ移動
-                if (!_isPosBack && _isLeft)
-                    transform.position = Vector3.MoveTowards(_pos, new Vector3(_firstPos.x - _xRange, _pos.y, 0), _speed * Time.deltaTime);
-                // 右へ移動
-                else if (!_isPosBack && _isRight)
-                {
-                    transform.position = Vector3.MoveTowards(_pos, new Vector3(_firstPos.x + _xRange, _pos.y, 0), _speed * Time.deltaTime);
-                }
-            }
-        }
-        // 回転
-        if (_isRotation)
-        {
-            gameObject.transform.Rotate(0, 0, _speedRotate * Time.deltaTime);
-        }
-        */
     }
 }

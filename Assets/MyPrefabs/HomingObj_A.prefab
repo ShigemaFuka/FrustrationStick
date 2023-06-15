@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7259067313867054780}
   - component: {fileID: 7259067313867054781}
   - component: {fileID: 1169226601813489473}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: HomingObj_A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -262,3 +262,5 @@ MonoBehaviour:
   _isPosBack: 0
   _isDown: 0
   _isUp: 0
+  _isLeft: 0
+  _isRight: 0

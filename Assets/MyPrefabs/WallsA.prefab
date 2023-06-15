@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7023997927721317598}
   - component: {fileID: 7023997927721317599}
   - component: {fileID: 7023997927721317592}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: DownWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -131,8 +131,15 @@ MonoBehaviour:
   _isRotation: 0
   _xRange: 2
   _yRange: 2
+  _firstPos: {x: 0, y: 0, z: 0}
   _isTrigger: 0
-  triggerObj: {fileID: 0}
+  _triggerObj: {fileID: 0}
+  _dontRoundTrip: 0
+  _isPosBack: 0
+  _isDown: 0
+  _isUp: 0
+  _isLeft: 0
+  _isRight: 0
 --- !u!1 &7023997927840861585
 GameObject:
   m_ObjectHideFlags: 0
@@ -180,7 +187,7 @@ GameObject:
   - component: {fileID: 7023997927984080912}
   - component: {fileID: 7023997927984080913}
   - component: {fileID: 7023997927984080914}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: UpWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -299,8 +306,15 @@ MonoBehaviour:
   _isRotation: 0
   _xRange: 2
   _yRange: 2
+  _firstPos: {x: 0, y: 0, z: 0}
   _isTrigger: 0
-  triggerObj: {fileID: 0}
+  _triggerObj: {fileID: 0}
+  _dontRoundTrip: 0
+  _isPosBack: 0
+  _isDown: 0
+  _isUp: 0
+  _isLeft: 0
+  _isRight: 0
 --- !u!1 &7023997928113731662
 GameObject:
   m_ObjectHideFlags: 0
@@ -313,7 +327,7 @@ GameObject:
   - component: {fileID: 7023997928113731666}
   - component: {fileID: 7023997928113731667}
   - component: {fileID: 7023997928113731660}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: RightWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -432,8 +446,15 @@ MonoBehaviour:
   _isRotation: 0
   _xRange: 2
   _yRange: 2
+  _firstPos: {x: 0, y: 0, z: 0}
   _isTrigger: 0
-  triggerObj: {fileID: 0}
+  _triggerObj: {fileID: 0}
+  _dontRoundTrip: 0
+  _isPosBack: 0
+  _isDown: 0
+  _isUp: 0
+  _isLeft: 0
+  _isRight: 0
 --- !u!1 &7023997929716351217
 GameObject:
   m_ObjectHideFlags: 0
@@ -446,7 +467,7 @@ GameObject:
   - component: {fileID: 7023997929716351221}
   - component: {fileID: 7023997929716351222}
   - component: {fileID: 7023997929716351223}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LeftWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -565,5 +586,12 @@ MonoBehaviour:
   _isRotation: 0
   _xRange: 2
   _yRange: 2
+  _firstPos: {x: 0, y: 0, z: 0}
   _isTrigger: 0
-  triggerObj: {fileID: 0}
+  _triggerObj: {fileID: 0}
+  _dontRoundTrip: 0
+  _isPosBack: 0
+  _isDown: 0
+  _isUp: 0
+  _isLeft: 0
+  _isRight: 0
