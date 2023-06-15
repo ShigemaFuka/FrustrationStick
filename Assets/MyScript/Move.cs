@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro; //TextMeshProを扱う際に必要
@@ -10,19 +8,15 @@ public class Move : MonoBehaviour
 {
     // 「start」がクリックされたらplayer追尾開始
     
-    [Tooltip("「S」のクリック判定のフラグ")] public bool _FlgBtn; 
-    [Tooltip("playerの画像コンポーネント")] public SpriteRenderer _sr;  
-    [SerializeField] Text _deathText;
-    [SerializeField, Tooltip("接触時に再生")] AudioSource _himei;
+    [Tooltip("「S」のクリック判定のフラグ")] bool _FlgBtn; 
+    [Tooltip("playerの画像コンポーネント")] SpriteRenderer _sr;  
+    Text _deathText;
+    [Tooltip("接触時に再生")] AudioSource _audioSource;
+    [SerializeField, Tooltip("悲鳴")] AudioClip _audioClip;
     [SerializeField, Tooltip("クリック音のobj")] GameObject _clickObjPrefab;
     CircleCollider2D _circleCollider2D;
     [Tooltip("死んだ回数")] int _count = 0;
     [Tooltip("Startの位置")] GameObject _startObj;
-
-    /*
-    GameObject _gimmickMoveControllerObj;
-    GimmickMoveController _gimmickMoveController; 
-    */
 
     void Start()
     {
@@ -42,13 +36,11 @@ public class Move : MonoBehaviour
         GameObject deathTextObj = GameObject.Find("DeathText (Legacy)");
         _deathText = deathTextObj.GetComponent<Text>();
 
-        _himei = GetComponent<AudioSource>();
+        _audioSource = GetComponent<AudioSource>();
 
         _circleCollider2D = GetComponent<CircleCollider2D>();
         // コライダOFF
         _circleCollider2D.enabled = false;
-
-        // _gimmickMoveController = _gimmickMoveControllerObj.GetComponent<GimmickMoveController>();
     }
 
     void Update()
@@ -76,8 +68,9 @@ public class Move : MonoBehaviour
         _sr.enabled = false;
         // コライダOFF
         _circleCollider2D.enabled = false;
-        _count += 1; 
-        _himei.Play();
+        _count += 1;
+        _audioSource.PlayOneShot(_audioClip);
+        //_audioSource.Play();
         Debug.Log("死んだ回数："+_count);
         Debug.Log(collision.gameObject.name + "に当たったよ");
     }
@@ -91,19 +84,14 @@ public class Move : MonoBehaviour
         _sr.enabled = true;
         // コライダON
         _circleCollider2D.enabled = true;
-
-        // 初期位置に戻すbool
-        // _gimmickMoveController._isPosBack = true;
     }
     
-    //「Back」ボタンがクリックされたら
+    // ここでは「Back」ボタンがクリックされたら
     public void ChangeScene(string name)
     {
         SceneManager.LoadScene(name);
 
         OnChangeBoolToFalse();
-
-        Debug.Log("ChangeScene!!");
     }
 
     public void OnChangeBoolToFalse()

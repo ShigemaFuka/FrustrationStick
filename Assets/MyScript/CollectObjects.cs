@@ -13,6 +13,8 @@ public class CollectObjects : MonoBehaviour
     [Tooltip("Goalのスプライトレンダラ")] SpriteRenderer _spriteRenderer;
     [Tooltip("Goalのコライダ")] Collider2D _collider;
     [Tooltip("条件表示")] Text _text; 
+    [SerializeField] AudioSource[] _audioSource; 
+    //[SerializeField, Tooltip("0：Goal出現、1：アイテム取得")] AudioClip[] _audioClips; 
 
     void Start()
     {
@@ -32,6 +34,8 @@ public class CollectObjects : MonoBehaviour
         // 初期化 
         _text = GameObject.Find("Message").GetComponent<Text>();
         _text.text = "●： " + _count + "/" + _itemNum;
+
+        //_audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -39,10 +43,15 @@ public class CollectObjects : MonoBehaviour
         // 設置したアイテム全てを取得したら実行
         if(_count == _itemNum)
         {
+            // ここでSE
+            _audioSource[0].PlayOneShot(_audioSource[0].clip);
+
             // 「Goal」を表示 
             _spriteRenderer.enabled = true;
             // 当たり判定 復活 
             _collider.enabled = true;
+
+            
         }
     }
 
@@ -53,6 +62,9 @@ public class CollectObjects : MonoBehaviour
             Destroy(collision.gameObject);
             _count++;
             _text.text = "●： " + _count + "/" + _itemNum;
+
+            // ここでSE
+            _audioSource[1].PlayOneShot(_audioSource[1].clip); 
         }
     }
 }
