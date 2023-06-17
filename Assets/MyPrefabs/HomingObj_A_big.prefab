@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3821840357565400511}
   - component: {fileID: 3821840357565400506}
   - component: {fileID: 3821840357565400507}
-  - component: {fileID: 4723547767883328583}
+  - component: {fileID: 9156934965456679928}
   m_Layer: 7
   m_Name: HomingObj_A_big
   m_TagString: Untagged
@@ -236,7 +236,7 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
---- !u!114 &4723547767883328583
+--- !u!114 &9156934965456679928
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -245,22 +245,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 3821840357565400510}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c46aaa222014824ab5c41c4f5ab3c1a, type: 3}
+  m_Script: {fileID: 11500000, guid: 0e05f45733b4c984d83c06c0c89a58a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 0
-  _speedRotate: 300
+  _speedRotate: 400
+  _resetPos: 0
   _isUpDown: 0
   _isLeftRight: 0
+  _isDown: 0
+  _isUp: 0
+  _isLeft: 0
+  _isRight: 0
   _isRotation: 1
   _xRange: 0
   _yRange: 0
   _firstPos: {x: 0, y: 0, z: 0}
   _isTrigger: 0
   _triggerObj: {fileID: 0}
-  _dontRoundTrip: 0
-  _isPosBack: 0
-  _isDown: 0
-  _isUp: 0
-  _isLeft: 0
-  _isRight: 0

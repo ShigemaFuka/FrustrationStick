@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7023997927721317593}
   - component: {fileID: 7023997927721317598}
   - component: {fileID: 7023997927721317599}
-  - component: {fileID: 7023997927721317592}
+  - component: {fileID: 7778203923989251951}
   m_Layer: 7
   m_Name: DownWall
   m_TagString: Untagged
@@ -112,7 +112,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &7023997927721317592
+--- !u!114 &7778203923989251951
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -121,25 +121,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 7023997927721317594}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c46aaa222014824ab5c41c4f5ab3c1a, type: 3}
+  m_Script: {fileID: 11500000, guid: 0e05f45733b4c984d83c06c0c89a58a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 5
+  _speed: 0
   _speedRotate: 0
+  _resetPos: 0
   _isUpDown: 0
   _isLeftRight: 0
+  _isDown: 0
+  _isUp: 0
+  _isLeft: 0
+  _isRight: 0
   _isRotation: 0
   _xRange: 2
   _yRange: 2
   _firstPos: {x: 0, y: 0, z: 0}
   _isTrigger: 0
   _triggerObj: {fileID: 0}
-  _dontRoundTrip: 0
-  _isPosBack: 0
-  _isDown: 0
-  _isUp: 0
-  _isLeft: 0
-  _isRight: 0
 --- !u!1 &7023997927840861585
 GameObject:
   m_ObjectHideFlags: 0
@@ -186,7 +185,7 @@ GameObject:
   - component: {fileID: 7023997927984080915}
   - component: {fileID: 7023997927984080912}
   - component: {fileID: 7023997927984080913}
-  - component: {fileID: 7023997927984080914}
+  - component: {fileID: 3044908966141325517}
   m_Layer: 7
   m_Name: UpWall
   m_TagString: Untagged
@@ -287,7 +286,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &7023997927984080914
+--- !u!114 &3044908966141325517
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -296,25 +295,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 7023997927984080908}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c46aaa222014824ab5c41c4f5ab3c1a, type: 3}
+  m_Script: {fileID: 11500000, guid: 0e05f45733b4c984d83c06c0c89a58a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 5
+  _speed: 0
   _speedRotate: 0
+  _resetPos: 0
   _isUpDown: 0
   _isLeftRight: 0
+  _isDown: 0
+  _isUp: 0
+  _isLeft: 0
+  _isRight: 0
   _isRotation: 0
   _xRange: 2
   _yRange: 2
   _firstPos: {x: 0, y: 0, z: 0}
   _isTrigger: 0
   _triggerObj: {fileID: 0}
-  _dontRoundTrip: 0
-  _isPosBack: 0
-  _isDown: 0
-  _isUp: 0
-  _isLeft: 0
-  _isRight: 0
 --- !u!1 &7023997928113731662
 GameObject:
   m_ObjectHideFlags: 0
@@ -326,7 +324,7 @@ GameObject:
   - component: {fileID: 7023997928113731661}
   - component: {fileID: 7023997928113731666}
   - component: {fileID: 7023997928113731667}
-  - component: {fileID: 7023997928113731660}
+  - component: {fileID: 2903387282981269685}
   m_Layer: 7
   m_Name: RightWall
   m_TagString: Untagged
@@ -427,7 +425,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &7023997928113731660
+--- !u!114 &2903387282981269685
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -436,25 +434,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 7023997928113731662}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c46aaa222014824ab5c41c4f5ab3c1a, type: 3}
+  m_Script: {fileID: 11500000, guid: 0e05f45733b4c984d83c06c0c89a58a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 5
+  _speed: 0
   _speedRotate: 0
+  _resetPos: 0
   _isUpDown: 0
   _isLeftRight: 0
+  _isDown: 0
+  _isUp: 0
+  _isLeft: 0
+  _isRight: 0
   _isRotation: 0
   _xRange: 2
   _yRange: 2
   _firstPos: {x: 0, y: 0, z: 0}
   _isTrigger: 0
   _triggerObj: {fileID: 0}
-  _dontRoundTrip: 0
-  _isPosBack: 0
-  _isDown: 0
-  _isUp: 0
-  _isLeft: 0
-  _isRight: 0
 --- !u!1 &7023997929716351217
 GameObject:
   m_ObjectHideFlags: 0
@@ -466,7 +463,7 @@ GameObject:
   - component: {fileID: 7023997929716351216}
   - component: {fileID: 7023997929716351221}
   - component: {fileID: 7023997929716351222}
-  - component: {fileID: 7023997929716351223}
+  - component: {fileID: 1527883218423513410}
   m_Layer: 7
   m_Name: LeftWall
   m_TagString: Untagged
@@ -567,7 +564,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &7023997929716351223
+--- !u!114 &1527883218423513410
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -576,22 +573,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 7023997929716351217}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c46aaa222014824ab5c41c4f5ab3c1a, type: 3}
+  m_Script: {fileID: 11500000, guid: 0e05f45733b4c984d83c06c0c89a58a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 5
+  _speed: 0
   _speedRotate: 0
+  _resetPos: 0
   _isUpDown: 0
   _isLeftRight: 0
+  _isDown: 0
+  _isUp: 0
+  _isLeft: 0
+  _isRight: 0
   _isRotation: 0
   _xRange: 2
   _yRange: 2
   _firstPos: {x: 0, y: 0, z: 0}
   _isTrigger: 0
   _triggerObj: {fileID: 0}
-  _dontRoundTrip: 0
-  _isPosBack: 0
-  _isDown: 0
-  _isUp: 0
-  _isLeft: 0
-  _isRight: 0

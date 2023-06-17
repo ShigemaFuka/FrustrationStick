@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Homing : MonoBehaviour
@@ -14,6 +15,9 @@ public class Homing : MonoBehaviour
     {
         _target = GameObject.FindGameObjectWithTag("Player");
         _renderer = _target.GetComponent<SpriteRenderer>();
+
+        // 問答無用で5秒経ったら消す 
+        Destroy(gameObject, 5.0f);
     }
 
     void Update()
@@ -26,9 +30,6 @@ public class Homing : MonoBehaviour
         // Player非表示なら自身を破棄
         else if (!_renderer.enabled)
         {
-            // スポーンされたて存在するObjの個数を減らす
-            SpawnHomingObj._count --;
-
             Destroy(gameObject);
         }
     }
@@ -37,10 +38,13 @@ public class Homing : MonoBehaviour
     {
         if(coll.gameObject.tag == "Player")
         {
-            // スポーンされたて存在するObjの個数を減らす
-            SpawnHomingObj._count --;
-
             Destroy(gameObject);
         }
+    }
+
+    void OnDestroy()
+    {
+        // スポーンされたObjの個数を減らす
+        SpawnHomingObj._count--;
     }
 }

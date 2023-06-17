@@ -9,6 +9,5 @@ public class ChangeSceneContr : MonoBehaviour
     public void OnClickBack(string name)
     {
         SceneManager.LoadScene(name);
-        Debug.Log("Back");
     }
 }

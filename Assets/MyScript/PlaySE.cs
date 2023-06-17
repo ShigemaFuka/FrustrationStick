@@ -26,7 +26,7 @@ public class PlaySE : MonoBehaviour
     private void Update()
     {
         // こっちはヒエラルキー上にないときは使えない
-        if (_isInstantiate != true && _isClick)
+        if (! _isInstantiate && _isClick)
         {
             // 左クリック時
             if (Input.GetMouseButtonDown(0))

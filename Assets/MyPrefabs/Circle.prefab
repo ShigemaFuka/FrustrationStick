@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7900534759396395787}
   - component: {fileID: 7900534759396395784}
   - component: {fileID: 7900534759396395785}
-  - component: {fileID: -2685942126636458905}
+  - component: {fileID: 7273588683071681366}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Player
@@ -100,11 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09fc8384d931f4a4b8b292b6bd6d2f36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _FlgBtn: 0
-  _sr: {fileID: 0}
-  _deathText: {fileID: 0}
-  _himei: {fileID: 0}
-  _clickObjPrefab: {fileID: 180722709864159724, guid: cd1ca0d660711bc4d9c29e7dd8be8b95, type: 3}
+  _audioClip: {fileID: 8300000, guid: 89dd557413ad77044b4528dd3a202ef5, type: 3}
 --- !u!58 &7900534759396395784
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -142,7 +138,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!82 &-2685942126636458905
+--- !u!82 &7273588683071681366
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -152,9 +148,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 89dd557413ad77044b4528dd3a202ef5, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 1
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0

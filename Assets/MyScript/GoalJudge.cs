@@ -24,7 +24,6 @@ public class GoalJudge : MonoBehaviour
             _move.OnChangeBoolToFalse();
             //‚±‚±‚ÅƒV[ƒ“Ø‚è‘Ö‚¦
             SceneManager.LoadScene("Goal");
-            Debug.Log(other.gameObject.name + "’…‚¢‚½‚æ");
         }
     }
 }
