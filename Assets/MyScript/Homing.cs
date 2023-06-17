@@ -45,6 +45,6 @@ public class Homing : MonoBehaviour
     void OnDestroy()
     {
         // ƒXƒ|[ƒ“‚³‚ê‚½Obj‚ÌŒÂ”‚ğŒ¸‚ç‚·
-        SpawnHomingObj._count--;
+        SpawnObjectTrigger._count--;
     }
 }

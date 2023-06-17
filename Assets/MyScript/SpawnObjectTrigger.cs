@@ -4,7 +4,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(CapsuleCollider2D))]
 
-public class SpawnHomingObj : MonoBehaviour
+public class SpawnObjectTrigger : MonoBehaviour
 {
     [SerializeField, Tooltip("ê∂ê¨ÇµÇΩÇ¢obj")] GameObject _spawnObject;
     [SerializeField, Tooltip("ÉgÅ[É^ÉãÇ≈âΩå¬ê∂ê¨Ç≥ÇπÇÈÇ©")] int _spawnCount;

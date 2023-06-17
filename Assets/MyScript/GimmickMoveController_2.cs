@@ -6,11 +6,11 @@ public class GimmickMoveController_2 : MonoBehaviour
 {
     [SerializeField, Tooltip("速度")] float _speed;
     [SerializeField, Tooltip("回転速度")] float _speedRotate;
-    [Header("往復用")]
-    [SerializeField, Tooltip("場所初期化")] public bool _resetPos;
+    [Header("往復用")]    
     [SerializeField, Tooltip("往復：上下")] bool _isUpDown;
     [SerializeField, Tooltip("往復：左右")] bool _isLeftRight;
     [Space]
+    [SerializeField, Tooltip("場所初期化")] public bool _resetPos;
     [SerializeField, Tooltip("下に移動(手動で真偽)")] bool _isDown;
     [SerializeField, Tooltip("上に移動(手動で真偽)")] bool _isUp;
     [SerializeField, Tooltip("下に移動(手動で真偽)")] bool _isLeft;

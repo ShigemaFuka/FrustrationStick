@@ -7,7 +7,8 @@ public class Shooting : MonoBehaviour
     [SerializeField, Tooltip("’e‚ÌƒvƒŒƒnƒu")] GameObject _prefab;
     //N•b‚²‚Æ‚É’e‚ğ¶¬‚·‚é‚½‚ß‚ÌŠÔŠÇ—
     [SerializeField, Tooltip("¶¬ŠÔ")] float _makingTime = 0.1f;
-    [Tooltip("Œ»İ‚ÌŠÔ")] float _currentTime = 0;
+    [Tooltip("Œ»İ‚ÌŠÔ")] public float _currentTime = 0;
+    float _intervalTime; 
     // 0‹‚©‚çn‚Ü‚é‚Ì‚Å0‚Å‰Šú‰» 
     [Tooltip("Šp“x")] float deg = 0;
     [SerializeField, Tooltip("¶¬‚ÌŠÔŠu(Šp“x)")] float _degInterval = 30.0f; 
@@ -18,11 +19,26 @@ public class Shooting : MonoBehaviour
     [SerializeField, Tooltip("Prefab‚ÌˆÚ“®‚Ì‹­‚³")] float _power;
     [Tooltip("¶¬‚µ‚½‚à‚Ì‚ª“ü‚Á‚Ä‚é")] GameObject _obj;
 
+    private void Start()
+    {
+        _intervalTime = 2;
+    }
+
     // Update is called once per frame
     void Update()
     {
         _currentTime += Time.deltaTime;
-        if (_makingTime < _currentTime)
+        if (isMadeObj)
+        {
+            // ˆê’èŠÔ‘Ò‚Á‚½‚çAÄ‚Ñ¶¬‚Å‚«‚é‚æ‚¤‚É‚·‚é 
+            if (_intervalTime < _currentTime)
+            {
+                _currentTime = 0;
+                isMadeObj = false;
+                _intervalTime = Random.Range(1.0f, 7.0f);
+            }
+        }
+        else if (_makingTime < _currentTime)
         {
             _currentTime = 0;
             

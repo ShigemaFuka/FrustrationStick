@@ -5,7 +5,7 @@ using UnityEngine;
 public class SlideController : MonoBehaviour
 {
     //Vector3 _initialPos;
-    [SerializeField, Header("”’l‚ª‘å‚«‚¢‚Ù‚Ç‚ä‚Á‚­‚è")] float _speed = 1.0f;
+    [SerializeField] float _speed = 1.0f;
     [SerializeField] GameObject[] _targets;
     [SerializeField, Tooltip("x²•ûŒü‚ÌˆÚ“®”ÍˆÍ(³”)")] float _range;
 
@@ -22,7 +22,7 @@ public class SlideController : MonoBehaviour
         {
             // ‰E‚ÖˆÚ“® 
             if(target.gameObject.transform.position.x <= _range)
-                target.gameObject.transform.position += Vector3.right * Time.deltaTime / _speed;
+                target.gameObject.transform.position += Vector3.right * Time.deltaTime * _speed;
         }
         
     }

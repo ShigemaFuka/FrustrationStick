@@ -57,10 +57,10 @@ public class CollectObjects : MonoBehaviour
             _text.text = "ÅúÅF " + _count + "/" + _itemNum;
 
             // Ç±Ç±Ç≈SE
-            Instantiate(_sE[1]);
+            Instantiate(_sE[1]); 
 
             if(_count == _itemNum)
-                Instantiate(_sE[0]);
+                Instantiate(_sE[0]); 
         }
     }
 }
