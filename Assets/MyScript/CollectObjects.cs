@@ -15,6 +15,9 @@ public class CollectObjects : MonoBehaviour
     [Tooltip("条件表示")] Text _text;
     [Header("[0] Goal出現　　　　[1] アイテム取得")]
     [SerializeField] GameObject[] _sE;
+    [SerializeField] SlideController _slideController;
+    [SerializeField] bool _useSlideController;
+
 
     void Start()
     {
@@ -34,6 +37,10 @@ public class CollectObjects : MonoBehaviour
         // 初期化 
         _text = GameObject.Find("Message").GetComponent<Text>();
         _text.text = "●： " + _count + "/" + _itemNum;
+
+        // カメラに連動してスライドするオブジェクト(位置初期化に必要) 
+        if(_useSlideController)
+            _slideController = GameObject.Find("SlideController").GetComponent<SlideController>();
     }
 
     void Update()
@@ -46,6 +53,21 @@ public class CollectObjects : MonoBehaviour
             // 当たり判定 復活 
             _collider.enabled = true;
         }
+        if(_count == 0)
+        {
+            // 「Goal」を非表示 
+            _spriteRenderer.enabled = false;
+            // 当たり判定 接触不可 
+            _collider.enabled = false;
+        }
+        // 「SlideController」がインスペクタ上にあるとき 
+        if (_slideController != null)
+        {
+            // 位置が初期化されたら、アイテム数も初期化 
+            if(_slideController._resetable == 1)
+                _count = 0; 
+        }
+        _text.text = "●： " + _count + "/" + _itemNum;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -54,7 +76,7 @@ public class CollectObjects : MonoBehaviour
         {
             Destroy(collision.gameObject);
             _count++;
-            _text.text = "●： " + _count + "/" + _itemNum;
+            //_text.text = "●： " + _count + "/" + _itemNum;
 
             // ここでSE
             Instantiate(_sE[1]); 

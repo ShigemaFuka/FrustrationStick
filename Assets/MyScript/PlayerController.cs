@@ -14,10 +14,17 @@ public class PlayerController : MonoBehaviour
     [SerializeField, Tooltip("悲鳴")] AudioClip _audioClip;
     Collider2D _collider2D;
     [Tooltip("死んだ回数")] int _count = 0;
-    [Tooltip("位置初期化までのカウントダウン")] Text _resetText;
+    [Header("以下は特定のObjectがないと使えない")]
+    [TextArea(1, 4)]
     [SerializeField, Tooltip("表示する文字")] string _string;
+    [Tooltip("位置初期化までのカウントダウン")] Text _resetText;
+    [SerializeField] bool _useResetText; 
 
-    SlideController _slideController; 
+
+    SlideController _slideController;
+    [SerializeField] bool _useSlideController;
+
+
 
     void Start()
     {
@@ -28,8 +35,11 @@ public class PlayerController : MonoBehaviour
         _deathText = GameObject.Find("DeathText (Legacy)").GetComponent<Text>();
 
         // カメラに連動してスライドするオブジェクト(位置初期化に必要) 
-        _slideController = GameObject.Find("SlideController").GetComponent<SlideController>(); 
-        _resetText = GameObject.Find("DeathResetPosition").GetComponent<Text>();
+        if (_useSlideController)
+            _slideController = GameObject.Find("SlideController").GetComponent<SlideController>();
+        if(_useResetText)
+            _resetText = GameObject.Find("DeathResetPosition").GetComponent<Text>();
+        
 
         _sr = GetComponent<SpriteRenderer>();
         _collider2D = GetComponent<Collider2D>();
