@@ -5,12 +5,12 @@ using UnityEngine.SceneManagement; // UnityEngine.SceneManagemntの機能を使用
 public class GoalJudge : MonoBehaviour
 {
     GameObject _player;
-    Move _move;
+    PlayerController _move;
 
     private void Start()
     {
         _player = GameObject.FindGameObjectWithTag("Player");
-        _move = _player.GetComponent<Move>();
+        _move = _player.GetComponent<PlayerController>();
     }
 
     /// <summary>

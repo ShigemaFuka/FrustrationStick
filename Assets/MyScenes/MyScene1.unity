@@ -854,6 +854,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 160639017}
+    - target: {fileID: 6582978018475639724, guid: aa8085ca4591c72438603ab94c179ac8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 38.799988
+      objectReference: {fileID: 0}
     - target: {fileID: 6582978018475639727, guid: aa8085ca4591c72438603ab94c179ac8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -942,6 +946,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6582978018924235289, guid: aa8085ca4591c72438603ab94c179ac8, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 519420031}
     - target: {fileID: 6582978018924235292, guid: aa8085ca4591c72438603ab94c179ac8, type: 3}
       propertyPath: m_Name
       value: Canvas (1)

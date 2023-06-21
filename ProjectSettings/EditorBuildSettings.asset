@@ -18,12 +18,15 @@ EditorBuildSettings:
     path: Assets/MyScenes/MyScene3.unity
     guid: 9a96566306fe08049882d73cd5bf1a4f
   - enabled: 1
+    path: Assets/MyScenes/MyScene4.unity
+    guid: c9bfb60f2afb65545a5dbdcf9bdf6e5a
+  - enabled: 1
+    path: Assets/MyScenes/MyScene5.unity
+    guid: fcebe74015fb442459583bc5f71c602d
+  - enabled: 1
     path: Assets/MyScenes/OperationScene.unity
     guid: 784ad35a87a4dcc43b8a4b026e6fb2d4
   - enabled: 1
     path: Assets/MyScenes/Goal.unity
     guid: 117e5edf5740b814cb20448cfe805b65
-  - enabled: 1
-    path: Assets/MyScenes/MyScene4.unity
-    guid: c9bfb60f2afb65545a5dbdcf9bdf6e5a
   m_configObjects: {}
